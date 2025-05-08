@@ -24,7 +24,8 @@ def setup_model():
     # Build the model
     print("=> creating CVNet_Rerank model")
     model = CVNet_Rerank(cfg.MODEL.DEPTH, cfg.MODEL.HEADS.REDUCTION_DIM, cfg.SupG.relup)
-    print(model)
+    # Don't print the full model structure as it causes segmentation fault
+    print(f"=> model created with depth={cfg.MODEL.DEPTH}, reduction_dim={cfg.MODEL.HEADS.REDUCTION_DIM}, relup={cfg.SupG.relup}")
     cur_device = torch.cuda.current_device()
     model = model.cuda(device=cur_device)
 
